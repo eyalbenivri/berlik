@@ -1,0 +1,20 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "kita": "./node_modules/.bin/ts-node -- kitanetzde-cli.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.1.2",
+    "@types/yargs": "^11.0.0",
+    "ts-node": "^6.0.5",
+    "typescript": "^2.8.3"
+  }
+}
