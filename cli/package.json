@@ -9,10 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "g": "^2.0.1",
+    "prettyjson": "^1.2.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
     "@types/node": "^10.1.2",
+    "@types/prettyjson": "0.0.28",
     "@types/yargs": "^11.0.0",
     "ts-node": "^6.0.5",
     "typescript": "^2.8.3"

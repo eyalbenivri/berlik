@@ -1,4 +1,6 @@
-import {KitaNetzDE} from "../server/src/modules/kitanetzde/main";
+import { KitaNetzDE } from "../server/src/modules/kitanetzde/main";
+import * as prettyjson from 'prettyjson';
 
 const kitanetztool = new KitaNetzDE();
-console.log(kitanetztool.search(null, 10247));
+kitanetztool.search(null, 10247, null, null)
+    .then(data => console.log(prettyjson.render(data)));

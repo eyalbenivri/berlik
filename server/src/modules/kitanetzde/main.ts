@@ -5,7 +5,7 @@ import * as cheerio from 'cheerio';
 import {Promise} from "es6-promise";
 
 class KitaNetzDEPageResults {
-    constructor(pageNumber:number, hasNextPage: boolean, kitaLink: [string]) {}
+    constructor(public pageNumber:number, public hasNextPage: boolean, public kitaLink: [string]) {}
 }
 
 export class KitaNetzDE {
@@ -13,8 +13,7 @@ export class KitaNetzDE {
     baseUrl = "http://www.kitanetz.de/kitasuche/kita-suchergebnis.php";
 
     search(keyword: string, plz: number, city: string, land: KitaNetzLANDOpts) {
-        const links = [];
-        this.getPage(keyword, plz, city, land, 1).then();
+        return  this.getPage(keyword, plz, city, land, 1);
     };
 
     getPage(keyword: string, plz: number, city: string, land: KitaNetzLANDOpts, pageNumber: number): Promise<KitaNetzDEPageResults> {
@@ -36,7 +35,8 @@ export class KitaNetzDE {
                 }).map((i, el) => {
                     return path.join(this.baseUrl, $(el).attr("href"));
                 }).get();
-                const hasNextLink = $("#navigation").children("a").filter((i, el) => el.html() == " » ").length
+                const pagesLinks = $("#navigation").children("a");
+                const hasNextLink = pagesLinks.filter((i, el) => $(el).text() == " » ").length > 0;
                 return resolve(new KitaNetzDEPageResults(pageNumber, hasNextLink, links));
             }).catch((err) => {
                 console.error(err);
